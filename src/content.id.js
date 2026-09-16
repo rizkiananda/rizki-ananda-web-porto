@@ -8,12 +8,11 @@ const profile = {
   email: 'rizkinandatama30@gmail.com',
   phone: '085693608025',
   github: 'https://github.com/rizkiananda',
-  linkedin: 'https://www.linkedin.com/in/rizkiananda-utama-a63a72137',
+  linkedin: 'https://www.linkedin.com/in/rizki-ananda-utama-a63a72137/',
   education: {
     degree: 'Sarjana Ilmu Komputer',
     school: 'Institut Pertanian Bogor',
     period: '2014 — 2018',
-    note: 'IPK 3.12',
   },
   languages: [
     { name: 'Indonesia', level: 'Bahasa ibu' },
@@ -21,12 +20,6 @@ const profile = {
   ],
 }
 
-const stats = [
-  { value: '7+', label: 'Tahun merilis software produksi' },
-  { value: '4', label: 'Perusahaan di bidang IoT, retail & ERP' },
-  { value: '2', label: 'Sistem utuh dibangun ulang dari nol' },
-  { value: '4', label: 'Stack inti: Go, Node, PHP, Vue' },
-]
 
 const skillGroups = [
   {
@@ -114,6 +107,7 @@ const cashiermediaOverview = {
   body: [
     'CashierMedia terlihat seperti mesin kasir, padahal kasir hanya bagian depannya. Di balik satu layar itu ada back office retail dan distribusi yang lengkap: semua yang dibutuhkan pemilik toko antara membeli stok sampai menutup pembukuan.',
     'Layar kasir menangani pencarian barang per satuan dan tingkat harga, keranjang di sisi server, pembayaran campuran, kembalian dan piutang, lalu mencetak invoice ukuran besar atau thermal. Checkout adalah momen stok benar-benar bergerak — sekali proses ia menulis rekap penjualan, detail transaksi, kartu stok, dan piutang bila ada.',
+    'Semua ini bukan demo. Sepuluh outlet memakai CashierMedia V1 saat ini dan tetap menjalankannya untuk menunjang penjualan mereka setiap hari, sehingga setiap perubahan harus aman bagi toko yang sedang beroperasi. V2 kini berada di tahap finishing redesign dan segera dipasarkan.',
   ],
   moduleGroups: [
     {
@@ -146,7 +140,7 @@ const featured = [
     link: 'https://mediacashier.com/demo-pos-v2',
     linkLabel: 'Demo langsung — V2',
     summary:
-      'Penulisan ulang total dari suite POS yang sama: monolit Laravel menjadi REST API Go (Fiber + GORM) dan SPA Vue 3 + TypeScript, berjalan di atas skema MySQL yang persis sama sehingga toko yang sudah berjalan bisa bermigrasi tanpa kehilangan satu transaksi pun.',
+      'Penulisan ulang total dari suite POS yang sama: monolit Laravel menjadi REST API Go (Fiber + GORM) dan SPA Vue 3 + TypeScript, berjalan di atas skema MySQL yang persis sama sehingga toko yang sudah berjalan bisa bermigrasi tanpa kehilangan satu transaksi pun. V2 adalah bentuk redesign dari sistem yang dipakai toko-toko itu sekarang, dan akan segera dipasarkan.',
     highlights: [
       'API Go + Fiber + GORM dengan autentikasi JWT, dipecah menjadi modul-modul fokus — katalog, keranjang, checkout, stok, pembelian, retur, pengiriman, armada, piutang, hutang, uang muka, jurnal, diskon, dashboard, dan pengaturan.',
       'SPA Vue 3 + Vite + TypeScript dengan PrimeVue dan Tailwind, Pinia untuk auth dan keranjang, responsif sampai lebar ponsel dengan keranjang berbentuk drawer, plus tema terang/gelap yang sungguhan.',
@@ -176,8 +170,9 @@ const featured = [
     link: 'https://mediacashier.com/demo-pos-v1',
     linkLabel: 'Demo langsung — V1',
     summary:
-      'Sistem aslinya, dibangun dan ditempa dengan Laravel dan MySQL untuk distributor dan toko retail sungguhan. Versi inilah yang membuktikan model domainnya — yang kemudian ditulis ulang menjadi V2 tanpa mengubah skema.',
+      'Sistem aslinya, dibangun dan ditempa dengan Laravel dan MySQL untuk distributor dan toko retail sungguhan. Empat tahun di meja kasir sungguhan yang membentuknya: aturan harga, kartu stok, dan skemanya matang di sini, dan V2 mewarisinya tanpa diubah.',
     highlights: [
+      'Masih berjalan di produksi: sepuluh outlet memakai V1 untuk penjualan sehari-hari, sehingga setiap perubahan harus aman bagi toko yang sedang beroperasi.',
       'Back office Laravel + MySQL yang lengkap: transaksi, pembelian, retur, mutasi masuk/keluar gudang, stok opname, laporan, keuangan, dan pengiriman.',
       'Alur kasir berbasis keyboard (Insert untuk menambah, F2 untuk membayar), dibuat untuk operator yang tidak menyentuh mouse saat ramai.',
       'Akumulasi promo dan diskon berjenjang diterapkan otomatis per baris saat order dibuat.',
@@ -209,6 +204,7 @@ const featured = [
     highlights: [
       'Keuangan — Payment Voucher, Journal Voucher, Receive Voucher, Petty Cash, dan LPJ, masing-masing dengan siklus buat → persetujuan → konfirmasi → rilis, duplikasi dokumen, serta cetak/ekspor ke PDF atau ZIP.',
       'Gudang — penerimaan barang, pengeluaran, transfer, stok opname, dan inventori, plus dashboard analitik untuk barang paling diminati, slow moving, dan stok tersedia dengan ringkasan buatan AI.',
+      'Purchasing — penerimaan dan pengeluaran barang dibuat dari Purchase Request atau Purchase Order, bukan diketik ulang: daftar PR/PO outstanding disaring dengan cut-off date yang bisa diatur, dokumen referensi yang sudah terpakai ditolak sebelum submit, dan setiap pergerakan stok menyimpan tautan ke dokumen yang mengesahkannya — sehingga satu barang bisa ditelusuri dari kartu stok sampai permintaan awalnya.',
       'HR — catatan dan dashboard absensi, pengajuan cuti & izin, klaim reimbursement, serta administrasi perjalanan dinas, sebagian disuplai dari API mobile/scanning terpisah.',
       'Master data & laporan — produk, vendor, gudang, dan Chart of Accounts per perusahaan, plus report builder ad-hoc asinkron: pengguna memilih modul, filter, dan kolom, lalu Excel/CSV dibuat di latar belakang.',
       'Di samping inti yang terdokumentasi, ada juga modul allocation, archive, checker, dispatch, purchase order, sales order, RMS, dan visit — suite ini mencakup seluruh operasi distribusi.',
@@ -294,6 +290,10 @@ const otherWork = [
 
 const ui = {
   nav: {
+    home: 'Beranda',
+    skills: 'Keahlian',
+    projects: 'Proyek',
+    theme: 'Ganti tema',
     about: 'Tentang',
     experience: 'Pengalaman',
     work: 'Karya',
@@ -304,38 +304,63 @@ const ui = {
     language: 'Bahasa',
   },
   hero: {
+    scroll: 'Gulir',
+    greeting: 'Halo, saya',
     open: 'Terbuka untuk peluang baru',
     currently: 'Saat ini',
     note: 'Full-stack developer di PT Pitjarus, membangun sistem ERP dan distribusi.',
     seeWork: 'Lihat karya',
-    contact: 'Hubungi saya',
     cv: 'CV',
   },
   about: {
     label: 'Tentang',
-    title: 'Sistem yang menjalankan <span class="text-accent">operasional nyata</span>, bukan sekadar demo.',
+    title: 'About<span class="text-brand">.me</span>',
     bio: [
-      'Saya mulai pada 2018 menulis backend untuk platform IoT di <strong class="font-semibold text-ink">PT Ravelware Technology Indonesia</strong> — aliran data perangkat, sistem klien yang bisa dikustomisasi, basis data relasional dan non-relasional berdampingan. Pekerjaan itu membentuk pola untuk semua yang datang setelahnya: bagian menariknya tidak pernah CRUD-nya, melainkan aturan operasional yang tidak pernah tertulis di mana pun.',
-      'Sejak itu saya melacak kapal lewat RPM, bahan bakar, dan GPS di atas <strong class="font-semibold text-ink">PHP OpenSwoole</strong>, membangun ulang suite point-of-sale Laravel menjadi <strong class="font-semibold text-ink">Golang dan Vue 3</strong> tanpa merusak satu pun akun yang sudah ada, dan kini menggarap modul ERP serta distribusi di <strong class="font-semibold text-ink">PT Pitjarus</strong>, tempat dokumen bergerak melewati rantai persetujuan yang sesungguhnya.',
-      'Saya senang menjadi orang yang bisa membawa satu fitur dari ERD, lewat API, sampai ke layar — dan yang membaca alur kerja klien sebelum memutuskan seperti apa skemanya nanti.',
+      'Software Developer dengan latar belakang kuat di pengembangan backend dan full-stack, dengan spesialisasi <strong class="font-semibold text-fg">Laravel, Node.js, Golang, dan Vue.js</strong>. Punya rekam jejak membangun sistem berbasis IoT dan sistem bisnis khusus (POS, ERP, manajemen distribusi) untuk berbagai industri. Ingin membawa kemampuan pemecahan masalah dan keluwesan teknis itu ke sebuah peran pengembangan penuh waktu.',
+      'Mengubah proses bisnis yang berantakan menjadi sistem yang benar-benar bisa dijalankan perusahaan. Saat ini fokus pada <strong class="font-semibold text-fg">sistem ERP &amp; distribusi</strong>, <strong class="font-semibold text-fg">alur persetujuan dokumen</strong>, dan <strong class="font-semibold text-fg">model data yang tetap benar saat skalanya membesar</strong>.',
     ],
     education: 'Pendidikan',
     languages: 'Bahasa',
     downloadCv: 'Unduh CV',
+    spec: {
+      operator: 'Operator',
+      role: 'Peran',
+      location: 'Lokasi',
+      status: 'Status',
+      open: 'TERBUKA',
+    },
+    log: 'profil_pengguna.log',
+    cards: [
+      { label: 'Pengalaman', value: '7+', unit: 'thn' },
+      { label: 'Proyek', value: '10', unit: 'dirilis' },
+      { label: 'Stack inti', value: '4', unit: 'dikuasai' },
+    ],
     portrait: 'Foto Rizki Ananda',
     toolbox: 'Perkakas',
   },
+  skills: {
+    label: 'Keahlian & pendidikan',
+    title: 'Stack yang saya andalkan — dan dari mana asalnya.',
+  },
   experience: {
     label: 'Pengalaman',
-    title: 'Tujuh tahun, empat perusahaan, <span class="text-accent">satu kebiasaan</span> — rilis, lalu jaga tetap jalan.',
+    title: 'Tujuh tahun, empat perusahaan, <span class="text-brand">satu kebiasaan</span> — rilis, lalu jaga tetap jalan.',
     now: 'Kini',
   },
   work: {
+    viewDetail: 'Lihat detail',
+    overview: 'Ringkasan',
+    prev: 'Proyek sebelumnya',
+    next: 'Proyek berikutnya',
+    dragHint: 'geser atau pakai panah',
+    featuredTag: 'Unggulan',
+    liveTag: 'Demo langsung',
+    internalTag: 'Internal',
     label: 'Karya pilihan',
-    title: 'Tiga produk, dan <span class="text-accent">kekusutan operasional</span> di balik masing-masing.',
+    title: 'Tiga produk, dan <span class="text-brand">kekusutan operasional</span> di balik masing-masing.',
     caseStudy: 'Studi kasus',
     sameSystem:
-      'V1 dan V2 adalah sistem yang sama. V2 adalah hasil redesign — monolit Laravel dipecah menjadi API Golang dan front end Vue.js, di atas basis data yang sama.',
+      'CashierMedia saat ini punya dua versi, V1 dan V2. Keduanya satu sistem dengan struktur basis data yang sama: V1 adalah monolit Laravel yang melayani sepuluh outlet hari ini, dan V2 adalah hasil redesign-nya — monolit yang sama dipecah menjadi API Golang dan front end Vue.js — yang kini disiapkan untuk dipasarkan.',
     alsoBuilt: 'Pernah dibangun',
     alsoBuiltTitle: 'Sistem terdahulu dan pekerjaan klien',
     screensCount: 'layar',
@@ -346,7 +371,7 @@ const ui = {
   },
   contact: {
     label: 'Kontak',
-    title: 'Punya sistem yang perlu <span class="text-accent">dibangun</span> — atau dibangun ulang?',
+    title: 'Punya sistem yang perlu <span class="text-brand">dibangun</span> — atau dibangun ulang?',
     body: 'Saya terbuka untuk posisi penuh waktu dan pekerjaan freelance tertentu. Ceritakan apa yang sebenarnya dikerjakan bisnis Anda, dan saya akan jujur apakah saya orang yang tepat untuk itu.',
     links: {
       email: 'Email',
@@ -357,6 +382,7 @@ const ui = {
     builtWith: 'Dibangun dengan Vue 3 · Vite · Tailwind CSS',
   },
   lightbox: {
+    caseStudyLabel: 'Studi kasus',
     close: 'Tutup',
     previous: 'Sebelumnya',
     next: 'Berikutnya',
@@ -365,7 +391,6 @@ const ui = {
 
 export default {
   profile,
-  stats,
   skillGroups,
   experience,
   cashiermediaOverview,

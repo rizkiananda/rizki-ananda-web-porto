@@ -8,7 +8,6 @@ const dict = { en, id }
 const pick = (key) => computed(() => dict[lang.value][key])
 
 export const profile = pick('profile')
-export const stats = pick('stats')
 export const skillGroups = pick('skillGroups')
 export const experience = pick('experience')
 export const cashiermediaOverview = pick('cashiermediaOverview')
@@ -17,6 +16,25 @@ export const otherWork = pick('otherWork')
 export const ui = pick('ui')
 
 /* Language-independent below. */
+
+/* Hero editor card. Hand-highlighted: one snippet does not justify a
+   syntax-highlighting dependency. Classes are styled in style.css. */
+export const code = {
+  file: 'stack.ts',
+  lines: [
+    '<span class="c">// stack.ts — what I actually build with</span>',
+    '<span class="k">import</span> <span class="p">{</span> <span class="t">Developer</span> <span class="p">}</span> <span class="k">from</span> <span class="s">\'./rizki\'</span><span class="p">;</span>',
+    '',
+    '<span class="k">export const</span> <span class="f">rizki</span><span class="p">:</span> <span class="t">Developer</span> <span class="p">= {</span>',
+    '  <span class="f">role</span><span class="p">:</span> <span class="s">\'Full-Stack Developer\'</span><span class="p">,</span>',
+    '  <span class="f">backend</span><span class="p">:</span> <span class="p">[</span><span class="s">\'Golang\'</span><span class="p">,</span> <span class="s">\'Node.js\'</span><span class="p">,</span> <span class="s">\'Laravel\'</span><span class="p">],</span>',
+    '  <span class="f">frontend</span><span class="p">:</span> <span class="p">[</span><span class="s">\'Vue 3\'</span><span class="p">,</span> <span class="s">\'TypeScript\'</span><span class="p">],</span>',
+    '  <span class="f">shipped</span><span class="p">:</span> <span class="p">[</span><span class="s">\'POS\'</span><span class="p">,</span> <span class="s">\'ERP\'</span><span class="p">,</span> <span class="s">\'IoT telemetry\'</span><span class="p">],</span>',
+    '  <span class="f">since</span><span class="p">:</span> <span class="n">2018</span><span class="p">,</span>',
+    '  <span class="f">open</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span>',
+    '<span class="p">}</span>',
+  ],
+}
 
 export const marquee = [
   'Golang', 'Fiber', 'Node.js', 'Express', 'Laravel', 'CodeIgniter', 'Phalcon',

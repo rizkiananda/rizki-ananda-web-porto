@@ -2,72 +2,82 @@
 import { computed } from 'vue'
 import { profile, ui } from '../data'
 
+const paths = {
+  mail: 'M3 6h18v12H3zM3 7l9 6 9-6',
+  phone: 'M6 3h3l2 5-2.5 1.5a12 12 0 0 0 5 5L15 12l5 2v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4 5.2 2 2 0 0 1 6 3z',
+  code: 'M8 18l-4-6 4-6M16 6l4 6-4 6M13 4l-2 16',
+  user: 'M4 20v-1a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v1M12 3a4 4 0 1 1 0 8 4 4 0 0 1 0-8z',
+}
+
 const links = computed(() => {
   const p = profile.value
   const l = ui.value.contact.links
   return [
-    { label: l.email, value: p.email, href: `mailto:${p.email}` },
-    { label: l.phone, value: p.phone, href: `tel:${p.phone.replace(/\D/g, '')}` },
-    { label: l.github, value: 'github.com/rizkiananda', href: p.github },
-    { label: l.linkedin, value: 'Rizki Ananda Utama', href: p.linkedin },
+    { label: l.email, value: p.email, href: `mailto:${p.email}`, icon: 'mail' },
+    { label: l.phone, value: p.phone, href: `tel:${p.phone.replace(/\D/g, '')}`, icon: 'phone' },
+    { label: l.github, value: 'github.com/rizkiananda', href: p.github, icon: 'code' },
+    { label: l.linkedin, value: 'Rizki Ananda Utama', href: p.linkedin, icon: 'user' },
   ]
 })
 </script>
 
 <template>
-  <section id="contact" class="grid-paper scroll-mt-24 border-t border-line bg-paper-2/40">
-    <div class="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
-      <p v-reveal class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-ink-soft">
-        <span class="text-accent">05</span>
-        <span class="h-px w-8 bg-line" />
+  <section id="contact" class="slide slide--stack overflow-hidden">
+    <div
+      class="pointer-events-none absolute -bottom-40 left-1/4 h-[32rem] w-[32rem] rounded-full opacity-25 blur-3xl"
+      style="background: radial-gradient(circle, var(--color-brand) 0%, transparent 65%)"
+    />
+
+    <div class="slide-inner relative mx-auto w-full max-w-7xl px-4 sm:px-6">
+      <div>
+      <p v-reveal class="inline-flex items-center gap-2.5 rounded-full border border-line bg-panel-2 px-3.5 py-1.5 text-[11.5px] font-bold uppercase tracking-[0.14em] text-fg-2">
+        <span class="text-brand">06</span>
         {{ ui.contact.label }}
       </p>
 
       <h2
         v-reveal="60"
-        class="mt-5 max-w-4xl font-display text-[clamp(2.2rem,7vw,5rem)] font-extrabold leading-[0.95] tracking-[-0.03em]"
+        class="mt-5 max-w-4xl font-display text-[clamp(2rem,5.5vw,3.6rem)] font-bold leading-[1.05] tracking-[-0.03em]"
         v-html="ui.contact.title"
       />
 
-      <p v-reveal="120" class="mt-6 max-w-xl text-[15.5px] leading-relaxed text-ink-soft">
-        {{ ui.contact.body }}
-      </p>
+      <p v-reveal="120" class="mt-5 max-w-xl text-[15px] leading-relaxed text-fg-2">{{ ui.contact.body }}</p>
 
       <a
-        v-reveal="160"
+        v-reveal="150"
         :href="`mailto:${profile.email}`"
-        class="group mt-9 inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 font-semibold text-paper transition-colors hover:bg-accent"
+        class="group mt-7 inline-flex items-center gap-3 rounded-full bg-brand px-6 py-3.5 font-bold text-brand-ink transition-transform hover:-translate-y-0.5"
       >
         {{ profile.email }}
-        <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.2">
+        <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.4">
           <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </a>
 
-      <dl v-reveal class="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+      <dl v-reveal="180" class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <a
           v-for="l in links"
           :key="l.label"
           :href="l.href"
           target="_blank"
           rel="noopener"
-          class="group bg-paper px-5 py-6 transition-colors hover:bg-ink hover:text-paper"
+          class="group rounded-2xl border border-line bg-panel-2 p-5 transition-colors hover:border-brand"
         >
-          <dt class="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-soft group-hover:text-paper/60">
-            {{ l.label }}
-          </dt>
-          <dd class="mt-2 break-words text-[14px] font-semibold">{{ l.value }}</dd>
+          <span class="grid h-9 w-9 place-items-center rounded-full bg-brand/15 text-brand">
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path :d="paths[l.icon]" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <dt class="mt-3 text-[11.5px] font-bold uppercase tracking-[0.14em] text-fg-2">{{ l.label }}</dt>
+          <dd class="mt-1 break-words text-[14px] font-semibold group-hover:text-brand">{{ l.value }}</dd>
         </a>
       </dl>
-    </div>
 
-    <footer class="border-t border-line">
-      <div
-        class="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-7 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-soft sm:flex-row sm:items-center sm:justify-between sm:px-8"
-      >
-        <p>© {{ new Date().getFullYear() }} Rizki Ananda</p>
+      <footer class="mt-12 flex flex-col gap-2 border-t border-line pt-6 text-[12px] text-fg-2 sm:flex-row sm:items-center sm:justify-between">
+        <p>© {{ new Date().getFullYear() }} {{ profile.name }}</p>
         <p>{{ ui.contact.builtWith }}</p>
+      </footer>
       </div>
-    </footer>
+    </div>
   </section>
 </template>

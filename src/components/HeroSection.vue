@@ -1,6 +1,6 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue'
-import { profile, stats, marquee, ui } from '../data'
+import { profile, marquee, code, ui } from '../data'
 
 const roleIndex = ref(0)
 let timer
@@ -14,72 +14,54 @@ onBeforeUnmount(() => clearInterval(timer))
 </script>
 
 <template>
-  <section id="top" class="grid-paper relative overflow-hidden pt-28 sm:pt-36">
-    <!-- soft accent wash -->
-    <div
-      class="pointer-events-none absolute -right-40 -top-40 h-[34rem] w-[34rem] rounded-full opacity-[0.16] blur-3xl"
-      style="background: radial-gradient(circle, #c45a3c 0%, transparent 65%)"
-    />
+  <section id="top" class="slide slide--first overflow-hidden" style="padding-top: var(--nav-h)">
+    <div class="pointer-events-none absolute inset-0 grid-dots text-fg" />
 
-    <div class="relative mx-auto max-w-6xl px-5 sm:px-8">
-      <p v-reveal class="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[11px] uppercase tracking-[0.22em] text-ink-soft">
-        <span class="inline-flex items-center gap-2">
-          <span class="relative grid h-2 w-2 place-items-center">
-            <span class="absolute h-2 w-2 animate-ping rounded-full bg-accent/60" />
-            <span class="h-1.5 w-1.5 rounded-full bg-accent" />
-          </span>
-          {{ ui.hero.open }}
-        </span>
-        <span class="text-line">/</span>
-        <span>{{ profile.location }}</span>
-      </p>
+    <div class="slide-inner mx-auto w-full max-w-7xl px-4 sm:px-6">
+      <div class="grid items-center gap-10 lg:grid-cols-12 lg:gap-10">
+        <div class="lg:col-span-6">
+          <p v-reveal class="inline-flex items-center gap-2 rounded-full border border-line bg-panel px-3.5 py-1.5 text-[12px] font-semibold text-fg-2">
+            <span class="relative grid h-2 w-2 place-items-center">
+              <span class="absolute h-2 w-2 animate-ping rounded-full bg-brand/60" />
+              <span class="h-1.5 w-1.5 rounded-full bg-brand" />
+            </span>
+            {{ ui.hero.open }}
+          </p>
 
-      <h1 class="mt-7 font-display font-extrabold leading-[0.84] tracking-[-0.03em]">
-        <span v-reveal class="block text-[clamp(3.4rem,13vw,10rem)]">RIZKI</span>
-        <span
-          v-reveal="120"
-          class="block text-[clamp(3.4rem,13vw,10rem)] text-transparent"
-          style="-webkit-text-stroke: 2px #c45a3c"
-        >
-          ANANDA
-        </span>
-      </h1>
+          <p v-reveal="60" class="mt-6 font-display text-lg font-medium text-fg-2">{{ ui.hero.greeting }}</p>
 
-      <div class="mt-10 grid gap-y-8 border-t border-line pt-8 md:grid-cols-12 md:gap-x-10">
-        <div v-reveal class="md:col-span-5">
-          <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">{{ ui.hero.currently }}</p>
-          <p class="mt-2 font-display text-2xl font-semibold leading-tight sm:text-3xl">
+          <h1
+            v-reveal="90"
+            class="mt-1 font-display text-[clamp(2.4rem,6vw,4.4rem)] font-bold leading-[1.02] tracking-[-0.03em]"
+          >
+            {{ profile.name }}
+          </h1>
+
+          <p v-reveal="120" class="mt-3 font-display text-[clamp(1.15rem,2.6vw,1.75rem)] font-semibold text-brand">
             <Transition name="role" mode="out-in">
               <span :key="roleIndex">{{ profile.tagline[roleIndex] }}</span>
             </Transition>
           </p>
-          <p class="mt-4 text-sm text-ink-soft">{{ ui.hero.note }}</p>
-        </div>
 
-        <div v-reveal="100" class="md:col-span-7">
-          <p class="text-lg leading-relaxed text-ink/85 sm:text-xl">{{ profile.summary }}</p>
+          <p v-reveal="150" class="mt-5 max-w-2xl text-[15px] leading-relaxed text-fg-2">
+            {{ profile.summary }}
+          </p>
 
-          <div class="mt-7 flex flex-wrap gap-3">
+          <div v-reveal="180" class="mt-7 flex flex-wrap gap-3">
             <a
               href="#work"
-              class="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-accent"
+              class="group inline-flex items-center gap-2 rounded-full bg-brand px-5 py-3 text-sm font-bold text-brand-ink transition-transform hover:-translate-y-0.5"
             >
               {{ ui.hero.seeWork }}
-              <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2.2">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-            </a>
-            <a
-              :href="`mailto:${profile.email}`"
-              class="inline-flex items-center gap-2 rounded-full border border-ink/25 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-ink hover:bg-ink hover:text-paper"
-            >
-              {{ ui.hero.contact }}
             </a>
             <a
               href="/CV-Rizki-Ananda.pdf"
               target="_blank"
               rel="noopener"
-              class="inline-flex items-center gap-2 rounded-full border border-ink/25 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-ink hover:bg-ink hover:text-paper"
+              class="inline-flex items-center gap-2 rounded-full border border-line px-5 py-3 text-sm font-bold transition-colors hover:border-brand hover:text-brand"
             >
               <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19h16" stroke-linecap="round" stroke-linejoin="round" />
@@ -88,24 +70,60 @@ onBeforeUnmount(() => clearInterval(timer))
             </a>
           </div>
         </div>
-      </div>
 
-      <dl v-reveal class="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-4">
-        <div v-for="s in stats" :key="s.label" class="bg-paper px-5 py-6">
-          <dt class="font-display text-4xl font-extrabold tracking-tight text-accent">{{ s.value }}</dt>
-          <dd class="mt-1.5 text-[13px] leading-snug text-ink-soft">{{ s.label }}</dd>
+        <div v-reveal="120" class="relative lg:col-span-6">
+          <!-- Ambient light: the hero's only glow, sitting behind the editor. -->
+          <div
+            class="code-glow pointer-events-none absolute -inset-x-16 -inset-y-14"
+          />
+
+          <div class="code-card relative overflow-hidden rounded-xl">
+            <div class="code-bar flex items-center gap-2 px-4 py-2.5">
+              <span class="h-3 w-3 rounded-full bg-[#ff5f57]" />
+              <span class="h-3 w-3 rounded-full bg-[#febc2e]" />
+              <span class="h-3 w-3 rounded-full bg-[#28c840]" />
+              <span class="mx-auto pr-10 font-mono text-[12px] text-[#cccccc]">{{ code.file }}</span>
+            </div>
+
+            <div class="code-tabs flex items-stretch">
+              <span class="code-tab flex items-center gap-2 px-4 py-2 font-mono text-[12px] text-[#ffffff]">
+                <span class="grid h-4 w-4 place-items-center rounded-[3px] bg-[#3178c6] text-[8px] font-bold text-white">TS</span>
+                {{ code.file }}
+                <svg viewBox="0 0 24 24" class="ml-2 h-3 w-3 text-[#8a8a8a]" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+                </svg>
+              </span>
+            </div>
+
+            <div class="code overflow-x-auto py-3 font-mono text-[12.5px] leading-[1.75]">
+              <div v-for="(l, i) in code.lines" :key="i" class="flex gap-4 px-4 sm:px-5">
+                <span class="w-4 shrink-0 select-none text-right" style="color: #858585">{{ i + 1 }}</span>
+                <span class="whitespace-pre">
+                  <span v-html="l || '&nbsp;'" /><span v-if="i === code.lines.length - 1" class="code-caret" />
+                </span>
+              </div>
+            </div>
+
+            <div class="code-status flex items-center justify-between gap-4 px-3 py-1 font-mono text-[10.5px] text-white/95">
+              <span class="flex items-center gap-3">
+                <span>⎇ main</span>
+                <span>⊗ 0 ⚠ 0</span>
+              </span>
+              <span class="flex items-center gap-3">
+                <span class="hidden sm:inline">Ln {{ code.lines.length }}, Col 2</span>
+                <span class="hidden sm:inline">UTF-8</span>
+                <span>TypeScript</span>
+              </span>
+            </div>
+          </div>
         </div>
-      </dl>
+      </div>
     </div>
 
-    <div class="marquee relative mt-16 overflow-hidden border-y border-line bg-paper-2/60 py-4">
-      <div class="marquee-track flex w-max gap-10">
-        <span
-          v-for="(t, i) in [...marquee, ...marquee]"
-          :key="i"
-          class="font-mono text-[12px] uppercase tracking-[0.18em] text-ink-soft"
-        >
-          {{ t }}<span class="ml-10 text-accent/60">✦</span>
+    <div class="marquee absolute inset-x-0 bottom-0 overflow-hidden border-t border-line bg-panel py-3">
+      <div class="marquee-track flex w-max gap-8">
+        <span v-for="(t, i) in [...marquee, ...marquee]" :key="i" class="text-[12px] font-semibold text-fg-2">
+          {{ t }}<span class="ml-8 text-brand">◆</span>
         </span>
       </div>
     </div>

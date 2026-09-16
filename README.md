@@ -5,10 +5,14 @@ Personal portfolio site. Vue 3 + Vite + Tailwind CSS v4, no UI framework, no rou
 
 ## Design
 
-Warm paper and ink: off-white canvas, faint blueprint grid, a single terracotta accent,
-Bricolage Grotesque for headings, Inter for body, JetBrains Mono for small labels. All of
-it lives in the `@theme` block of `src/style.css` — change the tokens there and the whole
-site follows.
+Full-screen stacked sections with vertical scroll-snap (desktop only — below 1024px or a
+short viewport it degrades to normal scrolling). Dark by default with a light theme, one
+blue accent, Space Grotesk for headings, Plus Jakarta Sans for body.
+
+Both themes are plain CSS custom properties: the dark set lives in the `@theme` block of
+`src/style.css`, the light set overrides the same tokens under `[data-theme="light"]`.
+`src/theme.js` stamps that attribute on `<html>` and persists the choice; an inline script
+in `index.html` applies it before first paint so there is no flash.
 
 ## Run
 
@@ -26,8 +30,9 @@ npm run preview
 | `src/content.en.js` / `src/content.id.js` | **All content**, one file per language — profile, skills, experience, projects, captions and every UI label. Same shape in both; `scripts/check-content.mjs` fails if they drift. |
 | `src/data.js` | Picks the active language and re-exports it as computed refs, plus the language-independent bits (marquee, icons, tones). |
 | `src/i18n.js` | The `lang` ref (persisted to `localStorage`, defaults to the browser language). |
-| `src/components/` | One component per section, plus `ProjectFeature.vue` (featured project + gallery) and `ImageLightbox.vue`. |
-| `src/style.css` | Tailwind import, theme tokens (colors/fonts), reveal + marquee animations. |
+| `src/components/` | One component per slide (`HeroSection`, `AboutSection`, `SkillsSection`, `ExperienceSection`, `CaseStudySection`, `ProjectsSection`, `ContactSection`), plus `ProjectDetail.vue` (slide-over panel with the gallery) and `ImageLightbox.vue` (fullscreen viewer). |
+| `src/style.css` | Tailwind import, both theme palettes, the `.slide` / scroll-snap system, the `.rail` carousel, reveal + marquee animations. |
+| `src/theme.js` | The `theme` ref and `toggleTheme()` (persisted to `localStorage`, defaults to the OS preference). |
 | `public/showcase/<slug>/` | Screenshots as `.webp` — `name.webp` (1600px) and `name-thumb.webp` (760px). |
 | `scripts/prepare-shots.py` | Regenerates `public/showcase/` from the raw PNGs, including the ERP branding redaction. |
 
@@ -35,8 +40,9 @@ npm run preview
 
 1. Drop screenshots into `public/showcase/<slug>/` (run `scripts/prepare-shots.py` to resize
    and generate thumbs, or do it by hand — the code expects the `-thumb` suffix).
-2. Add an entry to `featured` in `src/data.js` with matching `slug` and `shots[].file`
-   (filename without extension).
+2. Add an entry to `featured` in **both** `src/content.en.js` and `src/content.id.js` with
+   matching `slug` and `shots[].file` (filename without extension), then run
+   `node scripts/check-content.mjs`.
 
 Projects without screenshots go in `otherWork` instead — they render a generated gradient
 thumbnail from `icons` / `tones`.

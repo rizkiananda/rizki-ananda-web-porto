@@ -8,12 +8,11 @@ const profile = {
   email: 'rizkinandatama30@gmail.com',
   phone: '085693608025',
   github: 'https://github.com/rizkiananda',
-  linkedin: 'https://www.linkedin.com/in/rizkiananda-utama-a63a72137',
+  linkedin: 'https://www.linkedin.com/in/rizki-ananda-utama-a63a72137/',
   education: {
     degree: 'Bachelor of Computer Science',
     school: 'Institut Pertanian Bogor',
     period: '2014 — 2018',
-    note: 'GPA 3.12',
   },
   languages: [
     { name: 'Indonesia', level: 'First language' },
@@ -21,12 +20,6 @@ const profile = {
   ],
 }
 
-const stats = [
-  { value: '7+', label: 'Years shipping production software' },
-  { value: '4', label: 'Companies across IoT, retail & ERP' },
-  { value: '2', label: 'Full systems rebuilt from the ground up' },
-  { value: '4', label: 'Core stacks: Go, Node, PHP, Vue' },
-]
 
 const skillGroups = [
   {
@@ -115,6 +108,7 @@ const cashiermediaOverview = {
   body: [
     'CashierMedia looks like a cash register, but the register is only the front counter. Behind that one screen sits a full retail-and-distribution back office: everything a shop owner needs between buying stock and closing the books.',
     'The cashier screen handles product lookup by unit and price tier, a server-side cart, mixed payment methods, change and receivables, then prints the invoice in large or thermal format. Checkout is the moment stock actually moves — it writes the sales recap, the transaction lines, the stock ledger and any receivable in one pass.',
+    'None of this is a demo. Ten outlets are running CashierMedia V1 right now and have kept it running to support their daily selling, which is why every change to it has to be safe for a live shop floor. V2 is in the finishing stage of its redesign and is coming soon to market.',
   ],
   moduleGroups: [
     {
@@ -147,7 +141,7 @@ const featured = [
     link: 'https://mediacashier.com/demo-pos-v2',
     linkLabel: 'Live demo — V2',
     summary:
-      'A ground-up rewrite of the same POS suite: the Laravel monolith became a Go (Fiber + GORM) REST API and a Vue 3 + TypeScript SPA, running against the exact same MySQL schema so existing stores could migrate without losing a single transaction.',
+      'A ground-up rewrite of the same POS suite: the Laravel monolith became a Go (Fiber + GORM) REST API and a Vue 3 + TypeScript SPA, running against the exact same MySQL schema so existing stores could migrate without losing a single transaction. It is the redesign of the system those stores run today, and it is being prepared for release.',
     highlights: [
       'Go + Fiber + GORM API with JWT auth, split into focused modules — catalog, cart, checkout, stock, purchasing, returns, delivery, fleet, receivables, payables, advances, journal, discounts, dashboard and settings.',
       'Vue 3 + Vite + TypeScript SPA with PrimeVue and Tailwind, Pinia stores for auth and cart, responsive down to phone width with a drawer cart, plus a real light/dark theme.',
@@ -177,8 +171,9 @@ const featured = [
     link: 'https://mediacashier.com/demo-pos-v1',
     linkLabel: 'Live demo — V1',
     summary:
-      'The original system, built and hardened with Laravel and MySQL for real distributors and retail shops. It is the version that proved the domain model — the one V2 was rewritten from, schema intact.',
+      'The original system, built and hardened with Laravel and MySQL for real distributors and retail shops. Four years at real counters is what shaped it: the pricing rules, the stock ledger and the schema were all settled here, and V2 inherited them unchanged.',
     highlights: [
+      'Still in production: ten outlets use V1 for their day-to-day selling, so every change had to be safe for live stores.',
       'Full Laravel + MySQL back office: transactions, purchasing, returns, warehouse in/out mutation, stock opname, reporting, finance and delivery.',
       'Keyboard-first cashier flow (Insert to add, F2 to pay) built for operators who never touch the mouse during a rush.',
       'Automatic promo and tiered-discount accumulation applied per line at order time.',
@@ -210,6 +205,7 @@ const featured = [
     highlights: [
       'Finance — Payment Voucher, Journal Voucher, Receive Voucher, Petty Cash and LPJ (expense accountability), each with its own create → approval → confirmation → release lifecycle, document duplication and print/export to PDF or ZIP.',
       'Warehouse — Goods Receipt, Outbound, Transfer, Stock Opname and Inventory, plus an analytics dashboard covering highest-demand, slow-moving and available stock with AI-generated summaries.',
+      'Purchasing — goods receipts and outbounds are raised from a Purchase Request or Purchase Order instead of being typed from scratch: the outstanding PR/PO list is filtered by a configurable cut-off date, a reference document already consumed is rejected before submit, and every stock movement keeps a link back to the document that authorised it — so an item can be traced from its stock card to the original request.',
       'HR — attendance records and dashboard, leave & absence requests, reimbursement claims and travel administration, fed partly by a separate mobile/scanning API surface.',
       'Master data & reporting — products, vendors, warehouses and per-company Chart of Accounts, plus an async ad-hoc report builder that lets users pick a module, filters and columns, then generates Excel/CSV in the background.',
       'Alongside the documented core sit allocation, archive, checker, dispatch, purchase order, sales order, RMS and visit modules — the suite spans the whole distribution operation.',
@@ -294,48 +290,77 @@ const otherWork = [
 
 const ui = {
   nav: {
+    home: 'Home',
+    skills: 'Skills',
+    projects: 'Projects',
+    theme: 'Switch theme',
     about: 'About',
     experience: 'Experience',
     work: 'Work',
     contact: 'Contact',
-    hire: 'Hire me',
+    hire: 'Get in touch',
     menu: 'Toggle menu',
     top: 'Back to top',
     language: 'Language',
   },
   hero: {
+    scroll: 'Scroll',
+    greeting: 'Hi, I am',
     open: 'Open to opportunities',
     currently: 'Currently',
     note: 'Full-stack developer at PT Pitjarus, building ERP and distribution systems.',
     seeWork: 'See the work',
-    contact: 'Get in touch',
     cv: 'CV',
   },
   about: {
     label: 'About',
-    title: 'Systems that run the <span class="text-accent">shop floor</span>, not just the demo.',
+    title: 'About<span class="text-brand">.me</span>',
     bio: [
-      'I started in 2018 writing backends for IoT platforms at <strong class="font-semibold text-ink">PT Ravelware Technology Indonesia</strong> — device streams, customisable client systems, relational and non-relational stores side by side. That work set the pattern for everything since: the interesting part is never the CRUD, it is the operational rule nobody wrote down.',
-      'Since then I have tracked vessels by RPM, fuel and GPS on <strong class="font-semibold text-ink">PHP OpenSwoole</strong>, rebuilt a Laravel point-of-sale suite into <strong class="font-semibold text-ink">Golang and Vue 3</strong> without breaking a single existing account, and now build ERP and distribution modules at <strong class="font-semibold text-ink">PT Pitjarus</strong> where documents move through real approval chains.',
-      'I like being the person who can take a feature from the ERD through the API to the screen — and who reads the client\u2019s actual workflow before deciding what the schema should look like.',
+      'Software Developer with a strong background in backend and full-stack development, specializing in <strong class="font-semibold text-fg">Laravel, Node.js, Golang, and Vue.js</strong>. Proven track record building IoT-based systems and custom business systems (POS, ERP, distribution management) for various industries. Seeking to bring strong problem-solving skills and technical versatility to a full-time development role.',
+      'Turning messy business processes into systems a company can actually run on. Currently focused on <strong class="font-semibold text-fg">ERP &amp; distribution systems</strong>, <strong class="font-semibold text-fg">document approval flows</strong>, and <strong class="font-semibold text-fg">data models that stay correct at scale</strong>.',
     ],
     education: 'Education',
     languages: 'Languages',
     downloadCv: 'Download CV',
+    spec: {
+      operator: 'Operator',
+      role: 'Role',
+      location: 'Location',
+      status: 'Status',
+      open: 'OPEN',
+    },
+    log: 'user_profile.log',
+    cards: [
+      { label: 'Experience', value: '7+', unit: 'yrs' },
+      { label: 'Projects', value: '10', unit: 'shipped' },
+      { label: 'Core stacks', value: '4', unit: 'deep' },
+    ],
     portrait: 'Portrait of Rizki Ananda',
     toolbox: 'Toolbox',
   },
+  skills: {
+    label: 'Skills & education',
+    title: 'The stack I reach for — and where it came from.',
+  },
   experience: {
     label: 'Experience',
-    title: 'Seven years, four companies, <span class="text-accent">one habit</span> — ship it and keep it running.',
+    title: 'Seven years, four companies, <span class="text-brand">one habit</span> — ship it and keep it running.',
     now: 'Now',
   },
   work: {
+    viewDetail: 'View detail',
+    overview: 'Overview',
+    prev: 'Previous project',
+    next: 'Next project',
+    dragHint: 'drag or use the arrows',
+    featuredTag: 'Featured',
+    liveTag: 'Live demo',
+    internalTag: 'Internal',
     label: 'Selected work',
-    title: 'Three products, and the <span class="text-accent">operational mess</span> behind each one.',
+    title: 'Three products, and the <span class="text-brand">operational mess</span> behind each one.',
     caseStudy: 'Case study',
     sameSystem:
-      'V1 and V2 are the same system. V2 is the redesign — the Laravel monolith split into a Golang API and a Vue.js front end, on the same database.',
+      'CashierMedia currently comes in two versions, V1 and V2. They are one system on the same database structure: V1 is the Laravel monolith serving ten outlets today, and V2 is its redesign — the same monolith split into a Golang API and a Vue.js front end — now being readied for market.',
     alsoBuilt: 'Also built',
     alsoBuiltTitle: 'Earlier systems and client work',
     screensCount: 'screens',
@@ -346,7 +371,7 @@ const ui = {
   },
   contact: {
     label: 'Contact',
-    title: 'Got a system that needs <span class="text-accent">building</span> — or rebuilding?',
+    title: 'Got a system that needs <span class="text-brand">building</span> — or rebuilding?',
     body: 'I am open to full-time roles and selected freelance work. Tell me what the business actually does and I will tell you honestly whether I am the right person for it.',
     links: {
       email: 'Email',
@@ -357,6 +382,7 @@ const ui = {
     builtWith: 'Built with Vue 3 · Vite · Tailwind CSS',
   },
   lightbox: {
+    caseStudyLabel: 'Case study',
     close: 'Close',
     previous: 'Previous',
     next: 'Next',
@@ -365,7 +391,6 @@ const ui = {
 
 export default {
   profile,
-  stats,
   skillGroups,
   experience,
   cashiermediaOverview,

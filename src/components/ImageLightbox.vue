@@ -37,36 +37,38 @@ defineExpose({ open })
   <Transition name="fade">
     <div
       v-if="isOpen"
-      class="fixed inset-0 z-50 flex flex-col bg-ink/95 backdrop-blur-sm"
+      class="fixed inset-0 z-50 flex flex-col bg-black/90 text-white backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
       @click.self="close"
     >
       <button
-        class="absolute right-3 top-3 z-20 inline-flex items-center gap-2 rounded-full bg-paper px-4 py-2 text-[13px] font-semibold text-ink shadow-lg transition-colors hover:bg-accent hover:text-paper sm:right-6 sm:top-5"
+        class="absolute right-3 top-3 z-20 inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-[13px] font-bold text-brand-ink shadow-lg sm:right-6 sm:top-5"
         :aria-label="ui.lightbox.close"
         @click="close"
       >
-        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
+        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2">
           <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
         </svg>
         {{ ui.lightbox.close }}
-        <span class="ml-0.5 rounded border border-ink/20 px-1.5 py-px font-mono text-[10px] font-normal">Esc</span>
+        <span class="ml-0.5 rounded border border-black/25 px-1.5 py-px text-[10px] font-semibold">Esc</span>
       </button>
 
-      <div class="shrink-0 px-5 py-4 pr-32 text-paper sm:px-8 sm:pr-40">
-        <p class="font-mono text-[11px] uppercase tracking-[0.2em] text-paper/60">
-          {{ String(index + 1).padStart(2, '0') }} / {{ String(shots.length).padStart(2, '0') }}
+      <div class="shrink-0 px-5 py-4 pr-32 sm:px-8 sm:pr-40">
+        <p class="text-[12px] font-bold tracking-[0.2em] text-white/60">
+          {{ String(index + 1).padStart(2, '0') }}
+          <span class="mx-1 text-white/30">/</span>
+          {{ String(shots.length).padStart(2, '0') }}
         </p>
       </div>
 
       <div class="relative flex min-h-0 flex-1 items-center px-3 sm:px-6" @click.self="close">
         <button
-          class="absolute left-2 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-paper/20 bg-ink/60 text-paper backdrop-blur-sm transition-colors hover:bg-paper hover:text-ink sm:left-4"
+          class="absolute left-2 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/25 bg-black/50 backdrop-blur-sm transition-colors hover:bg-brand hover:text-brand-ink sm:left-4"
           :aria-label="ui.lightbox.previous"
           @click="step(-1)"
         >
-          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </button>
@@ -81,17 +83,17 @@ defineExpose({ open })
         </div>
 
         <button
-          class="absolute right-2 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-paper/20 bg-ink/60 text-paper backdrop-blur-sm transition-colors hover:bg-paper hover:text-ink sm:right-4"
+          class="absolute right-2 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/25 bg-black/50 backdrop-blur-sm transition-colors hover:bg-brand hover:text-brand-ink sm:right-4"
           :aria-label="ui.lightbox.next"
           @click="step(1)"
         >
-          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </button>
       </div>
 
-      <p class="px-6 py-5 text-center text-[13.5px] text-paper/75">{{ shots[index].caption }}</p>
+      <p class="px-6 py-5 text-center text-[13px] text-white/70">{{ shots[index].caption }}</p>
     </div>
   </Transition>
 </template>
