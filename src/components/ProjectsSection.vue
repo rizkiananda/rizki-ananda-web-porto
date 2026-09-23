@@ -1,11 +1,9 @@
 <script setup>
 import { ref } from 'vue'
 import SectionHead from './SectionHead.vue'
-import ProjectDetail from './ProjectDetail.vue'
 import { featured, otherWork, icons, tones, ui } from '../data'
 
 const rail = ref(null)
-const detail = ref(null)
 
 const scrollBy = (dir) => {
   const el = rail.value
@@ -48,13 +46,13 @@ const thumb = (p) => `/showcase/${p.slug}/${p.shots[0].file}-thumb.webp`
       </div>
 
       <div ref="rail" v-reveal class="rail -mx-4 shrink-0 px-4 sm:-mx-6 sm:px-6">
-        <!-- Featured: real screenshots, opens the detail panel -->
+        <!-- Featured: real screenshots, each opens its own #/work/<slug> page -->
         <article
           v-for="p in featured"
           :key="p.slug"
           class="group flex w-[17rem] flex-col overflow-hidden rounded-2xl border border-line bg-panel-2 sm:w-[22rem]"
         >
-          <button class="relative block aspect-[16/10] w-full shrink-0 overflow-hidden text-left" @click="detail.open(p)">
+          <a :href="`#/work/${p.slug}`" class="relative block aspect-[16/10] w-full shrink-0 overflow-hidden text-left">
             <img
               :src="thumb(p)"
               :alt="p.name"
@@ -64,7 +62,7 @@ const thumb = (p) => `/showcase/${p.slug}/${p.shots[0].file}-thumb.webp`
             <span class="absolute left-3 top-3 rounded-full bg-brand px-2.5 py-1 text-[10.5px] font-bold uppercase tracking-[0.1em] text-brand-ink">
               {{ ui.work.featuredTag }}
             </span>
-          </button>
+          </a>
 
           <div class="flex flex-1 flex-col p-5">
             <div class="flex items-baseline justify-between gap-3">
@@ -75,15 +73,15 @@ const thumb = (p) => `/showcase/${p.slug}/${p.shots[0].file}-thumb.webp`
             <p class="mt-3 line-clamp-4 text-[13px] leading-relaxed text-fg-2">{{ p.summary }}</p>
 
             <div class="mt-auto flex items-center gap-2 pt-4">
-              <button
+              <a
+                :href="`#/work/${p.slug}`"
                 class="inline-flex items-center gap-1.5 rounded-full bg-brand px-3.5 py-2 text-[12.5px] font-bold text-brand-ink"
-                @click="detail.open(p)"
               >
                 {{ ui.work.viewDetail }}
                 <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.4">
                   <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-              </button>
+              </a>
               <a
                 v-if="p.link"
                 :href="p.link"
@@ -154,7 +152,5 @@ const thumb = (p) => `/showcase/${p.slug}/${p.shots[0].file}-thumb.webp`
         </article>
       </div>
     </div>
-
-    <ProjectDetail ref="detail" />
   </section>
 </template>

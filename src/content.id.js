@@ -348,6 +348,7 @@ const ui = {
     now: 'Kini',
   },
   work: {
+    back: 'Kembali ke proyek',
     viewDetail: 'Lihat detail',
     overview: 'Ringkasan',
     prev: 'Proyek sebelumnya',

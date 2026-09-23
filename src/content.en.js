@@ -348,6 +348,7 @@ const ui = {
     now: 'Now',
   },
   work: {
+    back: 'Back to work',
     viewDetail: 'View detail',
     overview: 'Overview',
     prev: 'Previous project',
