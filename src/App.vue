@@ -38,8 +38,8 @@ watch(project, async (p) => {
     <AboutSection />
     <SkillsSection />
     <ExperienceSection />
-    <CaseStudySection />
     <ProjectsSection />
+    <CaseStudySection />
     <ContactSection />
   </main>
   <ImageLightbox ref="lightbox" />

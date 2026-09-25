@@ -8,7 +8,7 @@ import { cashiermediaOverview, ui } from '../data'
       <div class="grid gap-8 lg:grid-cols-12 lg:gap-12">
         <div v-reveal class="lg:col-span-5">
           <p class="inline-flex items-center gap-2.5 rounded-full border border-line bg-panel-2 px-3.5 py-1.5 text-[11.5px] font-bold uppercase tracking-[0.14em] text-fg-2">
-            <span class="text-brand">04</span>
+            <span class="text-brand">05</span>
             {{ ui.lightbox.caseStudyLabel }}
           </p>
 

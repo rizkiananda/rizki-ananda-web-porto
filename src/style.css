@@ -51,6 +51,13 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Tailwind v4's preflight gives buttons `cursor: default`; every button here
+   is clickable, so put the hand back once instead of per component. */
+button:not(:disabled),
+[role="button"] {
+  cursor: pointer;
+}
+
 ::selection {
   background: var(--color-brand);
   color: var(--color-brand-ink);

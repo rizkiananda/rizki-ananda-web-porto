@@ -20,7 +20,7 @@ const thumb = (p) => `/showcase/${p.slug}/${p.shots[0].file}-thumb.webp`
   <section id="work" class="slide slide--stack">
     <div class="slide-inner mx-auto w-full max-w-7xl px-4 sm:px-6">
       <div class="flex flex-wrap items-end justify-between gap-4">
-        <SectionHead num="05" :label="ui.work.label" :title="ui.work.title" />
+        <SectionHead num="04" :label="ui.work.label" :title="ui.work.title" />
 
         <div class="mb-8 flex items-center gap-2">
           <span class="hidden text-[12px] text-fg-2 sm:inline">{{ ui.work.dragHint }}</span>
