@@ -1,6 +1,7 @@
 <script setup>
-import { computed, onMounted, onBeforeUnmount, ref } from 'vue'
+import { computed, onMounted, onBeforeUnmount, nextTick, ref, watch } from 'vue'
 import { ui } from '../data'
+import { projectSlug } from '../router'
 import { LANGS, lang, setLang } from '../i18n'
 import { theme, toggleTheme } from '../theme'
 
@@ -17,6 +18,17 @@ const active = ref('top')
 const open = ref(false)
 let io
 
+/* A project page unmounts every section, so the observer has to be re-pointed
+   at the fresh elements on the way back — otherwise the highlight stays stuck
+   on whichever tab was active when the page was opened. */
+const observe = () => {
+  io.disconnect()
+  for (const s of sections.value) {
+    const el = document.getElementById(s.id)
+    if (el) io.observe(el)
+  }
+}
+
 onMounted(() => {
   io = new IntersectionObserver(
     (entries) => {
@@ -24,9 +36,16 @@ onMounted(() => {
     },
     { rootMargin: '-40% 0px -55% 0px' },
   )
-  for (const s of sections.value) {
-    const el = document.getElementById(s.id)
-    if (el) io.observe(el)
+  observe()
+})
+
+watch(projectSlug, async (slug) => {
+  await nextTick()
+  if (slug) {
+    io.disconnect()
+    active.value = 'work'
+  } else {
+    observe()
   }
 })
 
