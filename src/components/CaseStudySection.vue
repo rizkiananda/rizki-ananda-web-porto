@@ -5,7 +5,7 @@ import { cashiermediaOverview, ui } from '../data'
 <template>
   <section id="case-study" class="slide slide--stack">
     <div class="slide-inner mx-auto w-full max-w-7xl px-4 sm:px-6">
-      <div class="grid gap-8 lg:grid-cols-12 lg:gap-12">
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
         <div v-reveal class="lg:col-span-5">
           <p class="inline-flex items-center gap-2.5 rounded-full border border-line bg-panel-2 px-3.5 py-1.5 text-[11.5px] font-bold uppercase tracking-[0.14em] text-fg-2">
             <span class="text-brand">05</span>

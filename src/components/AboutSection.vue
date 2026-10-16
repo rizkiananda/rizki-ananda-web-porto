@@ -36,7 +36,7 @@ const cardIcons = [
     <div class="slide-inner mx-auto w-full max-w-7xl px-4 sm:px-6">
       <SectionHead num="01" :label="ui.about.label" :title="ui.about.title" />
 
-      <div class="grid gap-6 lg:grid-cols-12 lg:gap-8">
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
         <div v-reveal class="lg:col-span-5">
           <div class="rounded-3xl border border-line bg-panel-2 p-6 sm:p-7">
             <div class="relative mx-auto h-36 w-36">

@@ -46,7 +46,7 @@ const links = computed(() => {
       <a
         v-reveal="150"
         :href="`mailto:${profile.email}`"
-        class="group mt-7 inline-flex items-center gap-3 rounded-full bg-brand px-6 py-3.5 font-bold text-brand-ink transition-transform hover:-translate-y-0.5"
+        class="group mt-7 inline-flex max-w-full items-center gap-3 break-all rounded-full bg-brand px-6 py-3.5 font-bold text-brand-ink transition-transform hover:-translate-y-0.5"
       >
         {{ profile.email }}
         <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.4">

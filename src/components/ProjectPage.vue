@@ -130,7 +130,7 @@ const next = computed(() => {
       <h2 class="mt-14 font-display text-xl font-bold">
         {{ ui.work.screens }}
         <span class="ml-1 text-[12px] font-bold uppercase tracking-[0.14em] text-brand">
-          — {{ ui.work.clickToEnlarge }}
+          ({{ ui.work.clickToEnlarge }})
         </span>
       </h2>
       <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

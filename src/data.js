@@ -22,7 +22,7 @@ export const ui = pick('ui')
 export const code = {
   file: 'stack.ts',
   lines: [
-    '<span class="c">// stack.ts — what I actually build with</span>',
+    '<span class="c">// stack.ts: what I build with</span>',
     '<span class="k">import</span> <span class="p">{</span> <span class="t">Developer</span> <span class="p">}</span> <span class="k">from</span> <span class="s">\'./rizki\'</span><span class="p">;</span>',
     '',
     '<span class="k">export const</span> <span class="f">rizki</span><span class="p">:</span> <span class="t">Developer</span> <span class="p">= {</span>',
@@ -36,11 +36,6 @@ export const code = {
   ],
 }
 
-export const marquee = [
-  'Golang', 'Fiber', 'Node.js', 'Express', 'Laravel', 'CodeIgniter', 'Phalcon',
-  'OpenSwoole', 'Vue.js', 'TypeScript', 'Tailwind', 'MySQL', 'PostgreSQL',
-  'SQL Server', 'GORM', 'Knex', 'JWT', 'REST API', 'IoT', 'Image Recognition',
-]
 
 export const icons = {
   ship: 'M2 21c1.6 0 2.6-1 4-1s2.4 1 4 1 2.6-1 4-1 2.4 1 4 1 2.6-1 4-1M4 18l-1.5-6L12 9l9.5 3L20 18M12 9V4m-3 0h6',

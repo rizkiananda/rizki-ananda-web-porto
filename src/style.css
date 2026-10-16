@@ -120,10 +120,9 @@ button:not(:disabled),
 
 /* The first slide sits under the fixed nav, so its inner box is a nav shorter
    than the section — without this it inherits the full 100svh and centres its
-   content a nav-height too low. The bottom padding clears the marquee. */
+   content a nav-height too low. */
 .slide--first .slide-inner {
   min-height: calc(100svh - var(--nav-h));
-  padding-bottom: 5.5rem;
 }
 
 /* Thin scrollbars inside slides so the inner overflow is not ugly. */
@@ -155,16 +154,6 @@ button:not(:disabled),
 .reveal.is-in {
   opacity: 1;
   transform: none;
-}
-
-@keyframes marquee {
-  to { transform: translateX(-50%); }
-}
-.marquee-track {
-  animation: marquee 38s linear infinite;
-}
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
 }
 
 /* Horizontal project carousel */
@@ -231,6 +220,5 @@ button:not(:disabled),
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; scroll-snap-type: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .marquee-track { animation: none; }
   .code-caret { animation: none; }
 }

@@ -28,10 +28,10 @@ npm run preview
 | Path | What |
 |---|---|
 | `src/content.en.js` / `src/content.id.js` | **All content**, one file per language — profile, skills, experience, projects, captions and every UI label. Same shape in both; `scripts/check-content.mjs` fails if they drift. |
-| `src/data.js` | Picks the active language and re-exports it as computed refs, plus the language-independent bits (marquee, icons, tones). |
+| `src/data.js` | Picks the active language and re-exports it as computed refs, plus the language-independent bits (hero code card, icons, tones). |
 | `src/i18n.js` | The `lang` ref (persisted to `localStorage`, defaults to the browser language). |
 | `src/components/` | One component per slide (`HeroSection`, `AboutSection`, `SkillsSection`, `ExperienceSection`, `CaseStudySection`, `ProjectsSection`, `ContactSection`), plus `ProjectDetail.vue` (slide-over panel with the gallery) and `ImageLightbox.vue` (fullscreen viewer). |
-| `src/style.css` | Tailwind import, both theme palettes, the `.slide` / scroll-snap system, the `.rail` carousel, reveal + marquee animations. |
+| `src/style.css` | Tailwind import, both theme palettes, the `.slide` / scroll-snap system, the `.rail` carousel, reveal animation. |
 | `src/theme.js` | The `theme` ref and `toggleTheme()` (persisted to `localStorage`, defaults to the OS preference). |
 | `public/showcase/<slug>/` | Screenshots as `.webp` — `name.webp` (1600px) and `name-thumb.webp` (760px). |
 | `scripts/prepare-shots.py` | Regenerates `public/showcase/` from the raw PNGs, including the ERP branding redaction. |

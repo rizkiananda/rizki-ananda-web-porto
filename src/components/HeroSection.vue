@@ -1,6 +1,6 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue'
-import { profile, marquee, code, ui } from '../data'
+import { profile, code, ui } from '../data'
 
 const roleIndex = ref(0)
 let timer
@@ -18,7 +18,7 @@ onBeforeUnmount(() => clearInterval(timer))
     <div class="pointer-events-none absolute inset-0 grid-dots text-fg" />
 
     <div class="slide-inner mx-auto w-full max-w-7xl px-4 sm:px-6">
-      <div class="grid items-center gap-10 lg:grid-cols-12 lg:gap-10">
+      <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-10">
         <div class="lg:col-span-6">
           <p v-reveal class="inline-flex items-center gap-2 rounded-full border border-line bg-panel px-3.5 py-1.5 text-[12px] font-semibold text-fg-2">
             <span class="relative grid h-2 w-2 place-items-center">
@@ -117,14 +117,6 @@ onBeforeUnmount(() => clearInterval(timer))
             </div>
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="marquee absolute inset-x-0 bottom-0 overflow-hidden border-t border-line bg-panel py-3">
-      <div class="marquee-track flex w-max gap-8">
-        <span v-for="(t, i) in [...marquee, ...marquee]" :key="i" class="text-[12px] font-semibold text-fg-2">
-          {{ t }}<span class="ml-8 text-brand">◆</span>
-        </span>
       </div>
     </div>
   </section>
