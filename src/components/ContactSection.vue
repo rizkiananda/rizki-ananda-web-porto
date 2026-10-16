@@ -23,11 +23,6 @@ const links = computed(() => {
 
 <template>
   <section id="contact" class="slide slide--stack overflow-hidden">
-    <div
-      class="pointer-events-none absolute -bottom-40 left-1/4 h-[32rem] w-[32rem] rounded-full opacity-25 blur-3xl"
-      style="background: radial-gradient(circle, var(--color-brand) 0%, transparent 65%)"
-    />
-
     <div class="slide-inner relative mx-auto w-full max-w-7xl px-4 sm:px-6">
       <div>
       <p v-reveal class="inline-flex items-center gap-2.5 rounded-full border border-line bg-panel-2 px-3.5 py-1.5 text-[11.5px] font-bold uppercase tracking-[0.14em] text-fg-2">
